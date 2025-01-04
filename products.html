@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Products - Mark Farm Fresh Produce</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Our Products</h1>
+        <section class="product-list">
+            <div class="product">
+                <img src="images/tomatoes.jpg" alt="Fresh Tomatoes">
+                <h3>Fresh Tomatoes</h3>
+                <p>₵3.99 / kg</p>
+                <button onclick="addToCart('Fresh Tomatoes', 3.99)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/carrots.jpg" alt="Organic Carrots">
+                <h3>Organic Carrots</h3>
+                <p>₵2.49 / kg</p>
+                <button onclick="addToCart('Organic Carrots', 2.49)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/potatoes.jpg" alt="Potatoes">
+                <h3>Potatoes</h3>
+                <p>₵1.99 / kg</p>
+                <button onclick="addToCart('Potatoes', 1.99)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/lettuce.jpg" alt="Fresh Lettuce">
+                <h3>Fresh Lettuce</h3>
+                <p>₵1.49 / head</p>
+                <button onclick="addToCart('Fresh Lettuce', 1.49)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/apples.jpg" alt="Organic Apples">
+                <h3>Organic Apples</h3>
+                <p>₵2.99 / kg</p>
+                <button onclick="addToCart('Organic Apples', 2.99)">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mark Farm Fresh Produce. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
