@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Checkout - Mark Farm Fresh Produce</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Checkout</h1>
+        <section>
+            <h2>Order Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="order-summary-items">
+                    <tr>
+                        <td colspan="4">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Subtotal: ₵<span id="order-subtotal">0.00</span></h3>
+        </section>
+
+        <section>
+            <h2>Shipping Information</h2>
+            <form id="checkout-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mark Farm Fresh Produce. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Populate order summary from cart stored in localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const orderSummaryItems = document.getElementById('order-summary-items');
+        const orderSubtotal = document.getElementById('order-subtotal');
+
+        if (cart.length === 0) {
+            orderSummaryItems.innerHTML = '<tr><td colspan="4">Your cart is empty.</td></tr>';
+        } else {
+            orderSummaryItems.innerHTML = "";
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                subtotal += parseFloat(item.total);
+                orderSummaryItems.innerHTML += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.quantity}</td>
+                        <td>₵${item.price.toFixed(2)}</td>
+                        <td>₵${item.total}</td>
+                    </tr>
+                `;
+            });
+
+            orderSubtotal.textContent = subtotal.toFixed(2);
+        }
+
+        // Handle form submission
+        const checkoutForm = document.getElementById('checkout-form');
+        checkoutForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your order! Your produce will be delivered soon.');
+
+            // Clear the cart
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html'; // Redirect to homepage
+        });
+    </script>
+</body>
+</html>
